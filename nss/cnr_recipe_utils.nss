@@ -1505,7 +1505,8 @@ string CnrRecipeBuildRecipeString(object oDevice, int nRecipeIndex)
 /////////////////////////////////////////////////////////
 void CnrRecipeCreateItemOnObject(string sItemTag, object oTarget, int nQty)
 {
-  CreateItemOnObject(sItemTag, oTarget, nQty);
+  object oItem = CreateItemOnObject(sItemTag, oTarget, nQty);
+  SetIdentified(oItem, TRUE);
 }
 
 /////////////////////////////////////////////////////////
