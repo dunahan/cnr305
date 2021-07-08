@@ -1,8 +1,10 @@
-# cnr305
-Craftable Natural Resources (CNR)
-Author: Festyx & Hrnac; Fix for Mineral Bath from Axe Murderer
-Language: English
-Tags: Craftable Natural Resources (CNR), CNR, Craftable, Natural Resources, Resources
+# Craftable Natural Resources (CNR) Version 3.05a
+
+Author: Festyx & Hrnac (3.05); fix for Mineral Bath from Axe Murderer (=> 3.05a)<br/>
+Language: English<br/>
+Tags: Craftable Natural Resources (CNR), CNR, Craftable, Natural Resources, Resources<br/>
+
+
 This is a trade skill system with over 1200 recipes! Built on an easy to configure recipe sub-system. 
 Forum @ http://www.thefold.org/obake/forum/
 
