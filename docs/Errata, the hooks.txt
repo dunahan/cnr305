@@ -1,0 +1,7 @@
+These hook examples have not changed from V3.04
+-----------------------------------------------
+hook_get_dc_adj.nss
+hook_ok_to_level.nss
+hook_set_lev_cap.nss
+
+

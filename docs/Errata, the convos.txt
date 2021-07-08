@@ -1,0 +1,14 @@
+
+These convo's did not change since V3.04
+----------------------------------------
+cnr_c_cowchic.dlg
+cnr_c_craft_it.dlg
+cnr_c_journal.dlg
+cnr_c_recipe.dlg
+cnr_c_recipebook.dlg
+
+This convo is new to V3.05
+-----------------------------
+bless_pool.dlg
+
+

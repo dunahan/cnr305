@@ -1,0 +1,35 @@
+These creatures have not changed from V3.04
+-------------------------------------------
+cnrabadger.utc
+cnrabat.utc
+cnrablkbear.utc
+cnraboar.utc
+cnrabrnbear.utc
+cnracougar.utc
+cnracragcat.utc
+cnradeer.utc
+cnrafalcon.utc
+cnragrizbear.utc
+cnrajaguar.utc
+cnraleopard.utc
+cnralion.utc
+cnramalar.utc
+cnraowl.utc
+cnraox.utc
+cnrapanther.utc
+cnrapolarbear.utc
+cnrarat.utc
+cnraraven.utc
+cnrawhitestag.utc
+cnrawinwolf.utc
+cnrawolf.utc
+cnraworg.utc
+cnrchicken.utc
+cnrcow.utc
+
+These creatures are new to V3.05
+--------------------------------
+cnrbeetlebomber.utc
+cnrbeetlestink.utc
+
+

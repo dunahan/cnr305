@@ -1,0 +1,54 @@
+CNR 3.05 Additions/Revisions
+
+This release is mostly to revamp tailoring and correct a few bugs. However, CNR V3.05 does introduce some new functionality. Read about the new forge behavior below!
+
+1. Reduced the weight of tree branches to 5 lbs.
+
+2. Reduced the weight of the Bag of Sawdust to 0.5 lbs.
+
+3. Added Empty Wooden Bucket and Torch recipes to Wood Crafting.
+
+4. Added LasCivious's new skins and leather armor recipes to tailoring.
+
+5. Added Armor pattern recipes to Tailoring.
+
+6. Fixed Barley typo in the Bag of sparks recipe in the Enchanting Altar.
+
+7. Fixed recipe error for Titanium Tipped shuriken.
+
+8. Fixed typo for Comfrey plant in cnr_plant_init file.
+
+9. Added Bane's crafting books for missing trade skills.
+
+10. Added Forsetti's Healing Kit recipes to Tailoring.
+
+11. Added LasCivious's SoU grenade weapon recipes to Tailoring, Tinkering, and Alchemy.
+
+12. Added LasCivious's Holy Pool placeable to make Holy Water.
+
+13. Modified Leather Pouch recipe in Tailors Table.
+
+14. Added LasCivious's magical pouch recipes to Tailoring.
+
+15. Added cnr versions of the Bombardier Beetle and the Stink Beetle. These were created by LasCivious.
+
+16. Added Wood Quarterstaff and Wood Spear recipes to Wood Crafting.
+
+17. Revised Silver Tipping ability requirements to str=50%, dex=30%, cha=10%, wis=10%.
+
+18. Revised Titanium Tipping ability requirements to str=50%, dex=30%, cha=10%, wis=10%.
+
+19. Created Hide Rack and moved leather recipes to it.
+
+20. Added Hide Rack to Tailoring section in cnr_recipe_init.
+
+21. Added CnrMobOnDeathInitialize() to cnr_source_inc for configuring simple mob drops. (Used to configure the new beetle belly drops used by the new granade recipes).
+
+22. Added line to the cnrBrewersOven script to identify it as part of the Food Crafting tradeskill.
+
+23. Modified cnr_module_oml so that many of the SQL tables specify "sDeviceTag" as an index.
+
+24. Corrected cnr_recipe_utils script to properly load recipes from a SQL database. When configured to do so, CNR versions 3.03 and 3.04 would populate an SQL database with recipes. But, if the mod was restarted, CNR failed to reload the recipes. This has been corrected.
+
+25. "cnr_config_inc" now has a new setting which will enable/disable the need for players to add coal to the public forge and to the tinker's furnace before those placeables will work. Coal is recquired to get a flame! Lumps of coal can be mined from coal deposits. Each lump dropped into the forge will burn for 1 min real time. (Burn time is configurable). The more coal that is added, the longer the flame will burn. The public forge and tinker's furnace placeables have been altered to use new scripts. When lumps of coal are added, CNR will create a flame and plumes of smoke. CNR will also enable the sound of the flame burning. So, builders no longer need flames and plumes placed on the forges. The "cnrForgeFire" sound still should be placed. It has been modified to initialize without playing. Update your palettes to make use of this new functionality.
+

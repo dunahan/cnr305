@@ -1,0 +1,72 @@
+
+Does CNR require a persistent database?
+---------------------------------------
+CNR will function without a database. But, as soon as your server is restarted, 
+everyone's tradeskill XP and the top-ten lists will reset to zero. If you intend to use
+CNR in a single-player mod, saved games should restore without loss of tradeskill XP.
+ 
+Using CNR with a persistent database
+------------------------------------
+To keep both PC tradeskill XP and top-ten data persistent across server restarts, you must
+add/modify some code in CNR. CNR has a very generic interface that by default will store/retrieve
+tradeskill data to/from module locals. You must provide the appropriate calls to the database of
+your choice. See the file CNR_PERSIST_INC to override the defaults. I have included code
+which can be uncommented to interface with either an SQL DB via APS or the Bioware DB. Just read 
+the comments in CNR_PERSIST_INC.
+ 
+When your module loads, CNR_MODULE_OML will attempt to create a table named "cnr_misc" using SQL.
+If you have chosen to use the Bioware DB, then the table will not be created but the XP data will
+be saved flat, using "cnr_misc" for sCampaigneName. The cnr_misc table has the exact structure as
+the default APS table named "pwdata" - I duplicated it to keep the CNR data seperated.
+ 
+Storing recipes in a persistent database
+----------------------------------------
+For power users that wish to store recipe data in an external ODBC database via APS (presumably
+for altering the recipes on-the-fly without needing to restart their server), CNR will do this. 
+ 
+If enabled, CNR will attempt to create four additional recipe specific tables in your SQL compatible
+database. (Again, if your using the Bioware DB, then the tables will not be created.) The tables will
+be named cnr_devices, cnr_submenus, cnr_recipes & cnr_components.
+ 
+You must do the following for this functionality to work...
+ 
+(1) In CNR_CONFIG_INC, set CNR_BOOL_RECIPE_DATA_IS_PERSISTENT = TRUE. This will inform CNR to
+read/write recipe data using SQL syntax from/into the four tables.
+ 
+(2) In CNR_PERSIST_INC, comment/uncomment the appropriate lines of code to enable APS in all of the functions. The code is clearly commented.
+ 
+(3) If you are using an ODBC database other than MySQL (like MS-Access), you will need to modify the
+table creation code located in CNR_MODULE_OML.
+ 
+(4) You will need to get the recipe data into the ODBC database. In the near future, you will be able
+to use a utility I'm developing named RecipeMaker which will read/edit/write recipes directly to/from
+the database using ODBC. But until then, I can only offer you this procedure...
+ 
+(4a) Start the mod so that CNR can create the tables for you (specifically the "cnr_misc" table).
+(4b) Stop the mod.
+(4c) Using your favorite database tool (like SQLyog), execute the following SQL statement to create an
+entry in the "cnr_misc" table with a value of 1.
+ 
+INSERT INTO cnr_misc (player, tag, name, val) VALUES ("~", "MODULE", "CnrBoolBuildRecipeDatabase", "1");
+ 
+(4d) Start the mod again and the scripted recipe data will get written to the database. When it's done,
+CNR will change CnrBoolBuildRecipeDatabase to a value of zero for your convenience.
+ 
+From then on, when your mod is restarted, CNR will load recipe data from the database. Note: By my 
+observation, running with recipes stored in a database causes longer load times than loading from script.
+Also note: Recipe data is always cached in module locals. The database is only accessed when the mod starts
+or for on-the-fly updates.
+ 
+How do I reload recipes on-the-fly?
+-----------------------------------
+ 
+To cause a recipe to reload on-the-fly, you must reload the whole device. This can be done with the
+following procedure....
+ 
+(5a) Update the appropriate XXX_DeviceLoaded entry in the "cnr_misc" table so its 'val' field is zero.
+As an example, here is the SQL for the armor anvil...
+ 
+UPDATE cnr_misc SET val = 0 WHERE name = "cnrAnvilArmor_DeviceLoaded";
+ 
+(5b) The next time any player uses the Armor Anvil, CNR will reload the cache from the database. There
+will be a short lag while this occurs.
